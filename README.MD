@@ -16,4 +16,21 @@
 3. pip install "fastapi[standard]"
 4. pip freeze > requirements.txt
 5. pip install -m requirements.txt
+6. fastapi dev main.py
+```
+Open your browser at http://127.0.0.1:8000/
+You will see the JSON response as:
+{"Hello": "Welcome to Python FastAPI World!"}
 
+Open your browser at http://127.0.0.1:8000/items/5?q=somequery.
+You will see the JSON response as:
+{"item_id": 5, "q": "somequery"}
+
+Interactive API docs
+Now go to http://127.0.0.1:8000/docs.
+You will see the automatic interactive API documentation (provided by Swagger UI).
+
+Alternative API docs
+And now, go to http://127.0.0.1:8000/redoc.
+You will see the alternative automatic documentation (provided by ReDoc)
+```
