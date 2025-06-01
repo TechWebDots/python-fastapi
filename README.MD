@@ -1,9 +1,8 @@
-# Your 1 👍🏻 comment/like/share/subscribe/$Thanks will motivate us to create more such content. [TechWebDots on YouTube](https://www.youtube.com/@TechWebDots)
-1. Your Support & Feedback is important 💙💙💙
-2. Please rate us on Google https://g.page/SoftwareCoding?gm that will also be like a cofee of motivation. ☕🙂
-3. You can also write us at 📧 admin@techwebdots.in or quickly contact us at 📞+91-7303751089.
-4. Visit 🌐 https://www.TechWebDots.in for any Consulting.
-5. Information Discussed in the session & Short notes for quick reference given below-
+# Your Support & Feedback is important 💙💙💙 [TechWebDots on YouTube](https://www.youtube.com/@TechWebDots)
+1. Please rate us on Google https://g.page/SoftwareCoding?gm that will also be like a cofee of motivation. ☕🙂
+2. You can also write us at 📧 admin@techwebdots.in or quickly contact us at 📞+91-7303751089.
+3. Visit 🌐 https://www.TechWebDots.in for any Consulting.
+4. Information Discussed in the session & Short notes for quick reference given below-
 
 # URLs
 1. https://pypi.org/
