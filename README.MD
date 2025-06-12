@@ -54,4 +54,24 @@ You will see the alternative automatic documentation (provided by ReDoc)
 13. Setup the Azure function Locally first & test. run func init .
 14. Install the python version 3.12.* if required from python website and Select the right python version VS code editor.
 15. If changing the python version because of any reason, please recreate the environment after deleting the old environment only, make sure to reload the VS code editor.
-15. Update the function_app.py, main.py, requirements.txt and host.json 
+16. Update the function_app.py, main.py, requirements.txt and host.json 
+
+# ZIP Deply Python FastAPI on Azure Functions 
+17. Prepare AZ Functions (Single Function Structure) Required files and their significance for python FASTApi
+18. Create python based Azure function from azure portal
+19. Create the zip file with all the required content
+20. Prepare Azure zip deployment commands with cleanup - https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push
+``` python
+az login --tenant xxx-xxx-xxx---xxxx
+after login you will get the option to set subcription
+```
+## App Settings Cleanup & FunctionApp Deployment Commands
+``` python
+Delete a function app's settings command.
+az functionapp config appsettings delete --resource-group {resource_group} --name {fun_app_name} --setting-names SCM_DO_BUILD_DURING_DEPLOYMENT
+Perform deployment using the kudu zip push deployment for a function app. Add in the AppSetting SCM_DO_BUILD_DURING_DEPLOYMENT = true
+az functionapp deployment source config-zip --resource-group {resource_group} --name {fun_app_name} --src "{zip_file_path}" --build-remote true
+```
+## Important: When you use .zip deployment, any files from an existing deployment that aren't found in the .zip file are deleted from your function app.
+21. Test the AZURE function from AZ portal
+22. In case of multiple functions, Split each function into its own folder, Each folder has its own function content but there will be single zip.
