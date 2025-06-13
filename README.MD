@@ -58,6 +58,18 @@ You will see the alternative automatic documentation (provided by ReDoc)
 
 # ZIP Deply Python FastAPI on Azure Functions 
 17. Prepare AZ Functions (Single Function Structure) Required files and their significance for python FASTApi
+```
+python-fastapi/
+│
+├── main.py 			# Required with FASTApi code
+├── function_app.py		# Required Azure Function or FastAPI ASGI entry point with FASTApi object reference
+├── requirements.txt 	# Required with all the python packages
+├── host.json 			# Required by Azure Function With routePrefix = ""
+├── .funcignore     	# Optional for simple case but recommended
+├── __init__.py 		# Optional for simple case classic model, can be empty file, not strictly needed but good practice
+├── function.json 		# Optional for simple case Metadata for your function
+```
+
 18. Create python based Azure function from azure portal
 19. Create the zip file with all the required content
 20. Prepare Azure zip deployment commands with cleanup - https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push
@@ -67,11 +79,36 @@ after login you will get the option to set subcription
 ```
 ## App Settings Cleanup & FunctionApp Deployment Commands
 ``` python
-Delete a function app's settings command.
+- Delete a function apps settings command.
 az functionapp config appsettings delete --resource-group {resource_group} --name {fun_app_name} --setting-names SCM_DO_BUILD_DURING_DEPLOYMENT
-Perform deployment using the kudu zip push deployment for a function app. Add in the AppSetting SCM_DO_BUILD_DURING_DEPLOYMENT = true
+- Perform deployment using the kudu zip push deployment for a function app. Add in the AppSetting SCM_DO_BUILD_DURING_DEPLOYMENT = true
 az functionapp deployment source config-zip --resource-group {resource_group} --name {fun_app_name} --src "{zip_file_path}" --build-remote true
 ```
 ## Important: When you use .zip deployment, any files from an existing deployment that aren't found in the .zip file are deleted from your function app.
 21. Test the AZURE function from AZ portal
 22. In case of multiple functions, Split each function into its own folder, Each folder has its own function content but there will be single zip.
+
+# [Azure Function App Logging & KUDU URL Watch Now](https://youtu.be/VPWvxD7Kpeo?feature=shared)
+```Get kudu URL
+Function URL: https://fun-app-fast-api.azurewebsites.net/
+KUDU URL: https://fun-app-fast-api.scm.azurewebsites.net/
+
+KUDU References
+- https://github.com/projectkudu/kudu/wiki/
+- https://learn.microsoft.com/en-us/azure/app-service/resources-kudu
+
+// KQL Example to run in Logs App
+// Request count trend 
+// Chart Request count over the last day. 
+// To create an alert for this query, click '+ New alert rule'
+
+requests
+| where name == "fast-api-fun"
+| summarize totalCount=sum(itemCount) by bin(timestamp, 30m)
+| render timechart
+
+requests 
+| where name =="fast-api-fun"
+```
+23. Check deployment status, 
+24. Where to check Logs, Log stream, App Insights, Check Logs (KQL example), Compare with AppService based 
