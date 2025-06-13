@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 .vscode
 local.settings.json
-
+*.zip
 # C extensions
 *.so
 
