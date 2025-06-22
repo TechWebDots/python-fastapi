@@ -12,7 +12,7 @@
 
 # Commands:
 1. python -m venv fapivenv
-2. .\myvenv\Scripts\activate
+2. .\fapivenv\Scripts\activate
 3. pip install "fastapi[standard]"
 4. pip freeze > requirements.txt
 5. pip install -r requirements.txt
