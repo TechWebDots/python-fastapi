@@ -17,6 +17,7 @@
 4. pip freeze > requirements.txt
 5. pip install -r requirements.txt
 6. fastapi dev main.py
+
 ```
 Open your browser at http://127.0.0.1:8000/
 You will see the JSON response as:
@@ -33,4 +34,14 @@ You will see the automatic interactive API documentation (provided by Swagger UI
 Alternative API docs
 And now, go to http://127.0.0.1:8000/redoc.
 You will see the alternative automatic documentation (provided by ReDoc)
+
+To check all the installed versions of Python:
+py --list
+
+Iissue in the powershell prompt =>
+VS code terminal : Activate.ps1 cannot be loaded because running scripts is disabled on this system
+Either you can switch to cmd or Open PowerShell, Run the any of the following command: 
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser  
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+Note: Above commands only affects the current user, (Remove -Scope CurrentUser to apply to all users)
 ```
