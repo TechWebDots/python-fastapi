@@ -75,7 +75,8 @@ python-fastapi/
 20. Prepare Azure zip deployment commands with cleanup - https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push
 ``` python
 az login --tenant xxx-xxx-xxx---xxxx
-after login you will get the option to set subcription
+after login you will get the option to set subcription otherwise you can run the below command
+az account set --subscription <subscription_id_or_name>
 ```
 ## App Settings Cleanup & FunctionApp Deployment Commands
 ``` python
