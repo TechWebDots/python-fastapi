@@ -15,7 +15,7 @@
 2. .\myvenv\Scripts\activate
 3. pip install "fastapi[standard]"
 4. pip freeze > requirements.txt
-5. pip install -m requirements.txt
+5. pip install -r requirements.txt
 6. fastapi dev main.py
 ```
 Open your browser at http://127.0.0.1:8000/
