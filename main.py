@@ -11,6 +11,10 @@ def read_root():
 def read_health():
     return {"status": "OK", "message": "Service is running"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/first", status_code=200, response_description="Health Check")
+def read_health():
+    return {"status": "OK", "message": "Service1 is running"}
+
+@app.get("/second", status_code=200, response_description="Health Check")
+def read_health():
+    return {"status": "OK", "message": "Service2 is running"}

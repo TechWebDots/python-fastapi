@@ -10,12 +10,16 @@
 3. https://fastapi.tiangolo.com/learn/
 
 # Commands:
-1. python -m venv fapivenv
+1. py -3.12 -m venv fapivenv
 2. .\fapivenv\Scripts\activate
 3. pip install "fastapi[standard]"
 4. pip freeze > requirements.txt
 5. pip install -r requirements.txt
 6. fastapi dev main.py
+7. pip cache purge 
+8. deactivate
+9. pip install pip_search
+10. ip install --upgrade pip setuptools
 ```
 Open your browser at http://127.0.0.1:8000/
 You will see the JSON response as:
