@@ -117,3 +117,18 @@ requests
 ```
 23. Check deployment status, 
 24. Where to check Logs, Log stream, App Insights, Check Logs (KQL example), Compare with AppService based 
+25. pip install python-dotenv
+26. Create .env file
+27. Add Key-Value-pair = > API_KEY=my_secret_key
+28. Code Changes
+```
+	import os
+    from dotenv import load_dotenv
+
+    # Load environment variables from .env file
+    load_dotenv()
+
+    # Access the variables using os.getenv()
+    api_key = os.getenv("API_KEY")
+    print(f"API Key: {api_key}")
+```

@@ -1,5 +1,11 @@
 from typing import Union
 from fastapi import FastAPI
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 app = FastAPI()
 
@@ -15,6 +21,10 @@ def read_health():
 def read_health():
     return {"status": "OK", "message": "Service1 is running"}
 
+# Access the variables using os.getenv()
+api_key = os.getenv("API_KEY")
+print(f"API Key: {api_key}")
+
 @app.get("/second", status_code=200, response_description="Health Check")
 def read_health():
-    return {"status": "OK", "message": "Service2 is running"}
+    return {"status": "OK", "message": f"Service2 is running  {api_key}"}
