@@ -132,3 +132,15 @@ requests
     api_key = os.getenv("API_KEY")
     print(f"API Key: {api_key}")
 ```
+# Access Storage Account File From Azure Function App By using .env key variable locally & on Azure Production
+1. Create A CONTAINER & Add a file
+2. Get the storage account connection string key 
+3. Set the storage account connection string key in .env file 
+4. Add required Azure Package & Import Statements “azure-storage-blob”
+5. Add Read-File-From-Container method/route and read the key from .env file
+6. Test Code Changes locally
+7. [PROD] Add the key in Function App Settings (if not already exist)
+8. pip freeze > requirements.txt 
+9. Zip Deploy the function on Azure 
+10. Test Code Changes on Azure Portal
+
