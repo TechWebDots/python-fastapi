@@ -48,3 +48,14 @@ def read_safilename():
             return {f"I see the first blob name is -> {blob.name}"}
     except AzureError as e:
         print(f"Failed to connect or list blob: {e}")
+
+# @app.get("/getsacontainername", response_description="Get first Storage Account Container Name")
+# def read_sacontainername():
+#     try:
+#         blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+#         containers = blob_service_client.list_containers()
+#         print("Connected! checking first container:")
+#         for container in containers:
+#             return {f"I see the first container name is -> {container['name']}"}
+#     except AzureError as e:
+#         print(f"Failed to connect or list first container: {e}")
