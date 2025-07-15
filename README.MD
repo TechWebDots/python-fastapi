@@ -145,10 +145,10 @@ requests
 10. Test Code Changes on Azure Portal
 
 # Azure Functions | Key Vault Secret | Pyhton | FastAPI | Zip Deploy | HTTP Trigger
-✅ Zip Deploy Python FatsAPI Function in Azure Function App locally & in Azure Portal
-✅ #azure Function App http trigger access Key Vault
-✅ Create a Azure Key Vault from scratch & Add Secret #azurefunctions #httptrigger #fastapi 
-✅ For PRODUCTION Configure the Azure Function with identity enable and Set the Role "Key Vault Secrets User" on Key Vault for permission & set the user permission with "Key Vault Administrator" for local setup, also Added required Azure Package & Import Statements “azure-keyvault-secrets”
-✅ Add Read-File-From-Key-Vault-Secret method or route and read the secret and Test the Code Changes locally
-✅ Zip Deploy the function on Azure & Test Code Changes on Azure Portal
-✅ Generate updated pip freeze requirements.txt
+1. Zip Deploy Python FatsAPI Function in Azure Function App locally & in Azure Portal
+2. #azure Function App http trigger access Key Vault
+3. Create a Azure Key Vault from scratch & Add Secret #azurefunctions #httptrigger #fastapi 
+4. For PRODUCTION Configure the Azure Function with identity enable and Set the Role "Key Vault Secrets User" on Key Vault for permission & set the user permission with "Key Vault Administrator" for local setup, also Added required Azure Package & Import Statements “azure-keyvault-secrets”
+5. Add Read-File-From-Key-Vault-Secret method or route and read the secret and Test the Code Changes locally
+6. Zip Deploy the function on Azure & Test Code Changes on Azure Portal
+7. Generate updated pip freeze requirements.txt
