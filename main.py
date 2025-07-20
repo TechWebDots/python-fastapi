@@ -14,7 +14,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "Hello, Welcome to Python FastAPI World!"}
+    return {"message": "Hello, Welcome to Python FastAPI World with CICD pipeline!"}
 
 @app.get("/health", status_code=200, response_description="Health Check")
 def read_health():
