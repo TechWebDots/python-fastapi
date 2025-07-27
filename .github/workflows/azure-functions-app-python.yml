@@ -25,22 +25,19 @@ on:
 env:
   AZURE_FUNCTIONAPP_NAME: 'fun-based-on-app-service'   # set this to your function app name on Azure
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'       # set this to the path to your function app project, defaults to the repository root
-  PYTHON_VERSION: '3.12'                     # set this to the python version to use (e.g. '3.6', '3.7', '3.8')
+  PYTHON_VERSION: '3.12.x'                     # set this to the python version to use (e.g. '3.6', '3.7', '3.8')
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: dev
+    permissions:
+      id-token: write # Required for OIDC
+      contents: read # Required for actions/checkout
+    # environment: production
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v4
-
-    # If you want to use Azure RBAC instead of Publish Profile, then uncomment the task below
-    # - name: 'Login via Azure CLI'
-    #   uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_RBAC_CREDENTIALS }} # set up AZURE_RBAC_CREDENTIALS secrets in your repository
-
+    
     - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
       uses: actions/setup-python@v4
       with:
@@ -56,14 +53,17 @@ jobs:
     - name: 'List Installed Packages'
       run: pip list
 
-    - name: 'Run Azure Functions Action'
+    - name: 'Log in to Azure with AZ CLI'
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }} # Required to log in with OIDC
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }} # Required to log in with OIDC
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} # Required to log in with OIDC
+
+    - name: 'Run the Azure Functions Action'
       uses: Azure/functions-action@v1
-      id: fa
+      id: deploy-to-function-app
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
-        scm-do-build-during-deployment: true
-        enable-oryx-build: true
-      env:
-        ENABLE_FUNCTIONS_KUDU_VALIDATION: false
+        # publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
