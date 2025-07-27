@@ -56,32 +56,14 @@ jobs:
     - name: 'List Installed Packages'
       run: pip list
 
-    - name: Archive app as zip
-      run: |
-        zip -r functionapp.zip . \
-          -x "**/.git/*" \
-          -x "**/.github/*" \
-          -x "**/__pycache__/*" \
-          -x "**/*.pyc" \
-          -x "**/*.pyo" \
-          -x "**/*.zip" \
-          -x "**/*.zip" \
-          -x "**/.env" \
-          -x "**/*.env" \
-          -x "**/.devcontainer/*" \
-          -x "**/tests/*" \
-          -x "**/test/*" \
-          -x "**/README.md" \
-          -x "**/.DS_Store" \
-          -x "**/venv/*" \
-          -x "**/.venv/*" \
-          -x "**/fapivenv/*"
-    
-    - name: Run Azure Functions Action
+    - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
+      id: fa
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: functionapp.zip
+        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
         scm-do-build-during-deployment: true
         enable-oryx-build: true
+      env:
+        ENABLE_FUNCTIONS_KUDU_VALIDATION: false
