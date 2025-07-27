@@ -50,8 +50,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt --target=".python_packages/lib/site-packages"        
 
-    - name: 'List Installed Packages'
-      run: pip list
+    # - name: 'List Installed Packages'
+    #   run: pip list
 
     - name: 'Log in to Azure with AZ CLI'
       uses: azure/login@v2
@@ -59,6 +59,7 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }} # Required to log in with OIDC
         tenant-id: ${{ secrets.AZURE_TENANT_ID }} # Required to log in with OIDC
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} # Required to log in with OIDC
+        enable-AzPSSession: true
 
     - name: 'Run the Azure Functions Action'
       uses: Azure/functions-action@v1
