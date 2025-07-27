@@ -74,8 +74,8 @@ jobs:
           -x "**/README.md" \
           -x "**/.DS_Store" \
           -x "**/venv/*" \
-          -x "**/.venv/*"
-          -x "**/fapivenv/*" \
+          -x "**/.venv/*" \
+          -x "**/fapivenv/*"
       
     - name: Deploy to Azure Function App using Publish Profile
       uses: azure/webapps-deploy@v2
