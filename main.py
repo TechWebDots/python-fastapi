@@ -18,7 +18,7 @@ def read_root():
 
 @app.get("/health", status_code=200, response_description="Health Check")
 def read_health():
-    return {"status": "OK", "message": "Service is running"}
+    return {"status": "OK", "message": "Python FastAPI Azure Function is running"}
 
 @app.get("/GetSecretByName", response_description="Get Secret By Name")
 def read_GetSecretByName():
