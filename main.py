@@ -49,10 +49,12 @@ def read_GetJSONDoc():
 
         # Automatically uses Managed Identity (Azure) or Azure CLI/MSAL (local)
         credential = DefaultAzureCredential()
-        client = CosmosClient(url=cosmosdb_url, credential=credential)
+        # client = CosmosClient(url=cosmosdb_url, credential=credential)
+        client = CosmosClient.from_connection_string(cosmosdb_url)
         database = client.get_database_client("cosmicworks")
+        print(f"Get database:\t{database.id}")
         container = database.get_container_client("products")
-
+        print(f"Get container:\t{container.id}")
         new_item = {
             "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
             "category": "gear-surf-surfboards",
@@ -62,12 +64,12 @@ def read_GetJSONDoc():
         }
 
         created_item = container.upsert_item(new_item)
-
+        print(f"Upserted item:\t{created_item}")
         existing_item = container.read_item(
             item="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
             partition_key="gear-surf-surfboards",
         )
 
-        return {f"New Item Inserted Successfully : {created_item.items}"}
+        return {f"New Item Inserted Successfully: {existing_item}"}
     except AzureError as e:
             print(f"Failed to connect Cosmos DB : {e}")
