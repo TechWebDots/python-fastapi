@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from azure.core.exceptions import AzureError
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
+from azure.cosmos import CosmosClient
 
 # Load environment variables from .env file
 load_dotenv()
@@ -39,3 +40,34 @@ def read_GetSecretByName():
         return {f"Secret Value: {retrieved_secret.value}"}
     except AzureError as e:
             print(f"Failed to connect or list blob: {e}")
+
+@app.get("/GetJSONDoc", response_description="Get Cosmos JSON Doc")
+def read_GetJSONDoc():
+    try:        
+        # Access the variables using os.getenv()
+        cosmosdb_url = os.getenv("AZURE_COSMOSDB_URL")
+
+        # Automatically uses Managed Identity (Azure) or Azure CLI/MSAL (local)
+        credential = DefaultAzureCredential()
+        client = CosmosClient(url=cosmosdb_url, credential=credential)
+        database = client.get_database_client("cosmicworks")
+        container = database.get_container_client("products")
+
+        new_item = {
+            "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+            "category": "gear-surf-surfboards",
+            "name": "Yamba Surfboard",
+            "quantity": 12,
+            "sale": False,
+        }
+
+        created_item = container.upsert_item(new_item)
+
+        existing_item = container.read_item(
+            item="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+            partition_key="gear-surf-surfboards",
+        )
+
+        return {f"New Item Inserted Successfully : {created_item.items}"}
+    except AzureError as e:
+            print(f"Failed to connect Cosmos DB : {e}")
