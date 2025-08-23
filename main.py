@@ -24,7 +24,9 @@ def read_health():
 def read_GetSecretByName():
     try:
         # Replace with your vault name
-        key_vault_url = "https://demo00.vault.azure.net/"
+        # Access the variables using os.getenv()
+        key_vault_url = os.getenv("AZURE_KEYVAULT_URL")
+        # key_vault_url = "https://demo00.vault.azure.net/"
 
         # Automatically uses Managed Identity (Azure) or Azure CLI/MSAL (local)
         credential = DefaultAzureCredential()
