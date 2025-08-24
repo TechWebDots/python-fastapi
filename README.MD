@@ -152,3 +152,11 @@ requests
 5. Add Read-File-From-Key-Vault-Secret method or route and read the secret and Test the Code Changes locally
 6. Zip Deploy the function on Azure & Test Code Changes on Azure Portal
 7. Generate updated pip freeze requirements.txt
+
+# Azure Functions Read & Write on Cosmos DB NoSQL | Pyhton | FastAPI
+1. Create a Azure Cosmos DB from scratch 
+2. For PRODUCTION Configure the Azure Function with CosmosDB keys Primary Connection String & Test the Code Changes locally Using .env file
+3. pip install azure-cosmos
+4. Add from azure.cosmos import CosmosClient
+6. GitHub Actions Workfloe to Deploy the function on Azure & Test Code Changes on Azure Portal
+7. Generate updated requirements.txt
