@@ -160,3 +160,8 @@ requests
 4. Add from azure.cosmos import CosmosClient
 6. GitHub Actions Workfloe to Deploy the function on Azure & Test Code Changes on Azure Portal
 7. Generate updated requirements.txt
+
+# Azure Functions Read & Write on Cosmos DB NoSQL | Pyhton | FastAPI
+1. pip install redis
+2. import redis 
+3. pip freeze > requirements.txt
